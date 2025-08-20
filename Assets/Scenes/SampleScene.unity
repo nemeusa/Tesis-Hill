@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 146811262}
+  _followCameraSpeed: 0
 --- !u!65 &25286073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -563,6 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 330585545}
+  _followCameraSpeed: 2
 --- !u!65 &212673204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -682,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1719128732}
+  _followCameraSpeed: 0
 --- !u!65 &252741899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1801,6 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1677067866}
+  _followCameraSpeed: 0
 --- !u!65 &1136765506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2025,6 +2029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1677067866}
+  _followCameraSpeed: 0
 --- !u!65 &1439360253
 BoxCollider:
   m_ObjectHideFlags: 0

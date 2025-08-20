@@ -5,11 +5,13 @@ using UnityEngine;
 public class CameraTrigger : MonoBehaviour
 {
     public Camera cameraToActivate;
+    PlayerMovement _player;
+    [SerializeField] float _followCameraSpeed;
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-        if (player != null)
+        _player = other.GetComponent<PlayerMovement>();
+        if (_player != null)
         {
             Camera[] allCameras = FindObjectsOfType<Camera>();
             foreach (Camera cam in allCameras)
@@ -18,6 +20,20 @@ public class CameraTrigger : MonoBehaviour
             }
 
             cameraToActivate.gameObject.SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        if (_player != null)
+        {
+            var dir = _player.transform.position - cameraToActivate.transform.position;
+
+            Quaternion lookPlayer = Quaternion.LookRotation(dir);
+
+            //cameraToActivate.transform.forward = dir * Time.deltaTime * _followCameraSpeed;
+
+            cameraToActivate.transform.rotation = Quaternion.Slerp(cameraToActivate.transform.rotation, lookPlayer, Time.deltaTime * _followCameraSpeed);
         }
     }
 }
