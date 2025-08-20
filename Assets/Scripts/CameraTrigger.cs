@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    public Camera cameraToActivate; // la cámara que se activará al entrar
+    public Camera cameraToActivate;
 
     private void OnTriggerEnter(Collider other)
     {
