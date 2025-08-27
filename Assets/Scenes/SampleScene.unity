@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 146811262}
   _followCameraSpeed: 0
+  invertPlayerControls: 0
 --- !u!65 &25286073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -440,8 +441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c85e862dd3d1e41a98e5769723ae70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 10
+  moveSpeed: 3
+  rotationSpeed: 4
+  moveAngle: 0
+  invertControls: 0
+  waitForRelease: 0
 --- !u!136 &187367909
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -565,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 330585545}
   _followCameraSpeed: 0
+  invertPlayerControls: 0
 --- !u!65 &212673204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -685,6 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1719128732}
   _followCameraSpeed: 0
+  invertPlayerControls: 1
 --- !u!65 &252741899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1961,6 +1967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1677067866}
   _followCameraSpeed: 0
+  invertPlayerControls: 0
 --- !u!65 &1136765506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2186,6 +2193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToActivate: {fileID: 1677067866}
   _followCameraSpeed: 0
+  invertPlayerControls: 0
 --- !u!65 &1439360253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2788,6 +2796,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 31.038, y: 161.57, z: 5.787}
+--- !u!1 &1729294297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1729294299}
+  - component: {fileID: 1729294298}
+  m_Layer: 0
+  m_Name: Scene Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1729294298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729294297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efde2974ce4523247b3567773227956a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1729294299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729294297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.898781, y: 3.2488484, z: -18.376963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1756254314
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,3 +3328,4 @@ SceneRoots:
   - {fileID: 1105284926}
   - {fileID: 1808510074}
   - {fileID: 1489977729}
+  - {fileID: 1729294299}

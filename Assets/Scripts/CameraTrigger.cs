@@ -7,12 +7,17 @@ public class CameraTrigger : MonoBehaviour
     public Camera cameraToActivate;
     PlayerMovement _player;
     [SerializeField] float _followCameraSpeed;
+   // [SerializeField] int movePlayerAngle = 1;
+    [SerializeField] bool invertPlayerControls;
+
 
     private void OnTriggerEnter(Collider other)
     {
         _player = other.GetComponent<PlayerMovement>();
         if (_player != null)
         {
+            // _player.invertControls = invertPlayerControls;
+            _player.waitForRelease = invertPlayerControls;
             Camera[] allCameras = FindObjectsOfType<Camera>();
             foreach (Camera cam in allCameras)
             {
@@ -21,6 +26,17 @@ public class CameraTrigger : MonoBehaviour
 
             cameraToActivate.gameObject.SetActive(true);
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        _player = other.GetComponent<PlayerMovement>();
+        if (_player != null)
+        {
+            // _player.invertControls = invertPlayerControls;
+            _player.waitForRelease = invertPlayerControls;
+        }
+
     }
 
     private void Update()
