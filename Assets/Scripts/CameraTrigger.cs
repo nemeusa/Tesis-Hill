@@ -8,37 +8,49 @@ public class CameraTrigger : MonoBehaviour
     PlayerMovement _player;
     [SerializeField] float _followCameraSpeed;
    // [SerializeField] int movePlayerAngle = 1;
-    [SerializeField] bool invertPlayerControls;
+    //[SerializeField] bool invertPlayerControls;
+    public bool invertPlayerControls;
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        _player = other.GetComponent<PlayerMovement>();
-        if (_player != null)
-        {
-            // _player.invertControls = invertPlayerControls;
-            _player.waitForRelease = invertPlayerControls;
-            Camera[] allCameras = FindObjectsOfType<Camera>();
-            foreach (Camera cam in allCameras)
-            {
-                cam.gameObject.SetActive(false);
-            }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    _player = other.GetComponent<PlayerMovement>();
+    //    if (_player != null)
+    //    {
+    //    //    // _player.invertControls = invertPlayerControls;
+    //    //    _player.waitForRelease = invertPlayerControls;
+    //        Camera[] allCameras = FindObjectsOfType<Camera>();
+    //        foreach (Camera cam in allCameras)
+    //        {
+    //            cam.gameObject.SetActive(false);
+    //        }
 
-            cameraToActivate.gameObject.SetActive(true);
-        }
-    }
+    //        cameraToActivate.gameObject.SetActive(true);
+    //    }
+    //}
 
-    private void OnTriggerStay(Collider other)
-    {
-        _player = other.GetComponent<PlayerMovement>();
-        if (_player != null)
-        {
-            // _player.invertControls = invertPlayerControls;
-            _player.waitForRelease = invertPlayerControls;
-        }
+    ////private void OnTriggerExit(Collider other)
+    ////{
+    ////    _player = other.GetComponent<PlayerMovement>();
+    ////    if (_player != null)
+    ////    {
+    ////        // _player.invertControls = invertPlayerControls;
+    ////        _player.waitForRelease = !_player.waitForRelease;
+    ////        _player.waitForRelease = invertPlayerControls;
+    ////    }
+    ////}
 
-    }
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    _player = other.GetComponent<PlayerMovement>();
+    //    if (_player != null)
+    //    {
+    //        // _player.invertControls = invertPlayerControls;
+    //        _player.waitForRelease = invertPlayerControls;
+    //    }
 
+    //}
+    
     private void Update()
     {
         if (_player != null)
