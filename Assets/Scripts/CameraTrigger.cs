@@ -11,6 +11,10 @@ public class CameraTrigger : MonoBehaviour
     //[SerializeField] bool invertPlayerControls;
     public bool invertPlayerControls;
 
+    public ControllHorizontal controlHorizontal;
+    public ControllVertical controlVertical;
+
+
 
     //private void OnTriggerEnter(Collider other)
     //{
@@ -50,7 +54,7 @@ public class CameraTrigger : MonoBehaviour
     //    }
 
     //}
-    
+
     private void Update()
     {
         if (_player != null)

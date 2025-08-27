@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public bool waitForRelease;
     CameraTrigger _camTrigger;
 
+    ControllHorizontal _controlHorizontal;
+    ControllVertical _controlVertical;
+
     [Header("Physics")]
     private Rigidbody rb;
     private Transform cam;
@@ -36,12 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (invertControlsY)
         {
-            MoveBack();
+            //MoveBack();
         }
         else
         {
-            MoveForward();
+            //MoveForward();
         }
+        InvertControls();
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         _camTrigger = other.GetComponent<CameraTrigger>();
         if (_camTrigger != null)
         {
+            _controlHorizontal = _camTrigger.controlHorizontal;
+            _controlVertical = _camTrigger.controlVertical;
             waitForRelease = true;
             Camera[] allCameras = FindObjectsOfType<Camera>();
             foreach (Camera cam in allCameras)
@@ -60,25 +67,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-    public void MoveForward()
+    public void Move(float horizontal, float vertical)
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-
-        ////if (waitForRelease && Mathf.Approximately(horizontal, 0f) && Mathf.Approximately(vertical, 0f))
-        //if (waitForRelease && !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
-        //{
-        //    invertControls = !invertControls;
-        //    waitForRelease = false;
-        //}
-
-        //if (invertControls)
-        //{
-        //    horizontal *= -1;
-        //    vertical *= -1;
-        //}
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
         _playerRotation = Quaternion.LookRotation(direction);
@@ -93,37 +83,114 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-    public void MoveBack()
+    void InvertControls()
     {
-        float horizontal = -Input.GetAxis("Horizontal");
-        float vertical = -Input.GetAxis("Vertical");
+        float horizontal = 0;
+        float vertical = 0;
 
+        float horizontalOg = Input.GetAxis("Horizontal");
+        float horizontalVert = Input.GetAxis("Vertical");
+        float horizontalInvert = -Input.GetAxis("Horizontal");
+        float horizontalVertInvert = -Input.GetAxis("Vertical");
+        float verticalOg = Input.GetAxis("Vertical");
+        float verticalHorz = Input.GetAxis("Horizontal");
+        float verticalInvert = -Input.GetAxis("Vertical");
+        float verticalHorzInvert = -Input.GetAxis("Horizontal");
 
-        ////if (waitForRelease && Mathf.Approximately(horizontal, 0f) && Mathf.Approximately(vertical, 0f))
-        //if (waitForRelease && !Input.GetButton("Horizontal") && !Input.GetButton("Vertical"))
-        //{
-        //    invertControls = !invertControls;
-        //    waitForRelease = false;
-        //}
+        _controlHorizontal = _camTrigger.controlHorizontal;
+        _controlVertical = _camTrigger.controlVertical;
 
-        //if (invertControls)
-        //{
-        //    horizontal *= -1;
-        //    vertical *= -1;
-        //}
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        _playerRotation = Quaternion.LookRotation(direction);
-
-
-        if (direction.magnitude >= 0.1f)
+        if (ControllHorizontal.horizontalOg == _camTrigger.controlHorizontal)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, _playerRotation, rotationSpeed * Time.deltaTime);
-
-            Vector3 moveDir = transform.rotation * Vector3.forward;
-            rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+            horizontal = horizontalOg;
         }
+        else if (ControllHorizontal.horizontalVert == _camTrigger.controlHorizontal)
+        {
+            horizontal = horizontalVert;
+        }
+        else if (ControllHorizontal.horizontalInvert == _camTrigger.controlHorizontal)
+        {
+            horizontal = horizontalInvert;
+        }
+        else if (ControllHorizontal.horizontalVertInvert == _camTrigger.controlHorizontal)
+        {
+            horizontal = horizontalVertInvert;
+        }
+
+        if (ControllVertical.verticalOg == _camTrigger.controlVertical)
+        {
+            vertical = verticalOg;
+        }
+        else if (ControllVertical.verticalHorz == _camTrigger.controlVertical)
+        {
+            vertical = verticalHorz;
+        }
+        else if (ControllVertical.verticalInvert == _camTrigger.controlVertical)
+        {
+            vertical = verticalInvert;
+        }
+        else if (ControllVertical.verticalHorzInvert == _camTrigger.controlVertical)
+        {
+            vertical = verticalHorzInvert;
+        }
+
+        Debug.Log(_controlHorizontal + " " + _controlVertical);
+        
+        Move(horizontal, vertical);
     }
 
+    //public void MoveForward()
+    //{
+    //    float horizontal = Input.GetAxis("Horizontal");
+    //    float vertical = Input.GetAxis("Vertical");
+
+    //    Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+    //    _playerRotation = Quaternion.LookRotation(direction);
+
+
+    //    if (direction.magnitude >= 0.1f)
+    //    {
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, _playerRotation, rotationSpeed * Time.deltaTime);
+
+    //        Vector3 moveDir = transform.rotation * Vector3.forward;
+    //        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+    //    }
+    //}
+
+
+    //public void MoveBack()
+    //{
+    //    float horizontal = -Input.GetAxis("Horizontal");
+    //    float vertical = -Input.GetAxis("Vertical");
+
+    //    Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+    //    _playerRotation = Quaternion.LookRotation(direction);
+
+
+    //    if (direction.magnitude >= 0.1f)
+    //    {
+    //        transform.rotation = Quaternion.Slerp(transform.rotation, _playerRotation, rotationSpeed * Time.deltaTime);
+
+    //        Vector3 moveDir = transform.rotation * Vector3.forward;
+    //        rb.MovePosition(rb.position + moveDir * moveSpeed * Time.deltaTime);
+    //    }
+    //}
+
+}
+
+public enum ControllHorizontal
+{
+    horizontalOg,
+    horizontalVert,
+    horizontalInvert,
+    horizontalVertInvert
+}
+public enum ControllVertical
+{
+    verticalOg,
+    verticalHorz,
+    verticalInvert,
+    verticalHorzInvert
 }

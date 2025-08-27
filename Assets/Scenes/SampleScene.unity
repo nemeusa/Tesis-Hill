@@ -158,6 +158,8 @@ MonoBehaviour:
   cameraToActivate: {fileID: 146811262}
   _followCameraSpeed: 0
   invertPlayerControls: 0
+  controlHorizontal: 0
+  controlVertical: 0
 --- !u!65 &25286073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -570,6 +572,8 @@ MonoBehaviour:
   cameraToActivate: {fileID: 330585545}
   _followCameraSpeed: 0
   invertPlayerControls: 0
+  controlHorizontal: 0
+  controlVertical: 0
 --- !u!65 &212673204
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -691,6 +695,8 @@ MonoBehaviour:
   cameraToActivate: {fileID: 1719128732}
   _followCameraSpeed: 0
   invertPlayerControls: 1
+  controlHorizontal: 2
+  controlVertical: 2
 --- !u!65 &252741899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2003,6 +2009,8 @@ MonoBehaviour:
   cameraToActivate: {fileID: 1677067866}
   _followCameraSpeed: 0
   invertPlayerControls: 0
+  controlHorizontal: 0
+  controlVertical: 0
 --- !u!65 &1136765506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2229,6 +2237,8 @@ MonoBehaviour:
   cameraToActivate: {fileID: 1677067866}
   _followCameraSpeed: 0
   invertPlayerControls: 0
+  controlHorizontal: 0
+  controlVertical: 0
 --- !u!65 &1439360253
 BoxCollider:
   m_ObjectHideFlags: 0
